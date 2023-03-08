@@ -25,3 +25,25 @@ body {
   padding-left: 1em;
 }
 
+.formSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.formSection > input,
+.formSection > textarea {
+  max-width: 30rem;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  margin: .5em;
+  padding: .2em;
+  font-size: 1.2em;
+}
+
+.formSection > label {
+  padding: .2em;
+  color: var(--light-font);
+  margin: .5em;
+}
+
