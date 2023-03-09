@@ -6,16 +6,44 @@ import CVCard from "../CVCard";
 
 
 export class Form extends Component {
+  constructor() {
+    super();
+    this.state = {
+      personalInfo: {
+        firstName: '',
+        lastName: '',
+        title: '',
+        address: '',
+        phoneNumber: '',
+        email: '',
+        description: ''
+
+      }
+    }
+  }
+
+  handlePersonalInfoChange = (fieldName, value) => {
+    this.setState({
+      personalInfo: {
+        ...this.state.personalInfo,
+        [fieldName]: value,
+      }
+    });
+  };
+
   render() {
     return (
       <>
       
       <div className="wrapper">
         <section className="card">
-          <Personal />
+          <Personal
+            personalInfo={this.state.personalInfo}
+            onPersonalInfoChange={this.handlePersonalInfoChange}
+          />
           <Experience />
         </section>
-        <CVCard />
+        <CVCard personalInfo={this.state.personalInfo} />
       </div>
       
       </>

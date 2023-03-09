@@ -2,8 +2,14 @@ import React, { Component } from 'react'
 
 export class Personal extends Component {
     constructor(props) {
-        super();
+        super(props);
     }
+
+    handleInputChange = (event) => {
+      const { name, value } = event.target;
+      this.props.onPersonalInfoChange(name, value);
+    };
+
   render() {
     return (
       <div className='formSection'>
@@ -12,36 +18,45 @@ export class Personal extends Component {
         type="text"
         required
         placeholder='First Name'
-        name='firstName' />
+        name='firstName'
+        onChange={this.handleInputChange} />
         <input type="text" 
         required
-        placeholder='Last Name'/>
+        name='lastName'
+        placeholder='Last Name'
+        onChange={this.handleInputChange}/>
         <input 
         type="text"
         required
         placeholder='Title'
-        name='title' />
+        name='title' 
+        onChange={this.handleInputChange}/>
         <label htmlFor="photo">
           User Image
           <input
           type="file"
-          name='photo' />
+          name='photo'
+           />
         </label>
         <input
         type="text"
         name='address'
-        placeholder='Address' />
+        placeholder='Address'
+        onChange={this.handleInputChange} />
         <input 
         type="text"
         name='phoneNumber'
-        placeholder='Phone Number' />
+        placeholder='Phone Number'
+        onChange={this.handleInputChange} />
         <input type="email"
         name='email'
-        placeholder='Email' />
+        placeholder='Email'
+        onChange={this.handleInputChange} />
         <textarea name="descriptiom" 
         cols="10" 
         rows="7"
-        placeholder='Description'></textarea>
+        placeholder='Description'
+        onChange={this.handleInputChange}></textarea>
       </div>
     )
   }
