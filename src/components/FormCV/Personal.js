@@ -7,6 +7,7 @@ export class Personal extends Component {
   render() {
     return (
       <div className='formSection'>
+        <h2>Personal</h2>
         <input 
         type="text"
         required
