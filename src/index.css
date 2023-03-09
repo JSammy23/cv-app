@@ -1,7 +1,9 @@
 :root {
   --dark-gray: #333333;
   --light-font: #fff;
-
+  --light-gray: #eeeeee;
+  --white-input: #ffffff;
+  --green: #84CC16;
 }
 
 *, *::before, *::after {
@@ -25,6 +27,21 @@ body {
   padding-left: 1em;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 3em;
+  gap: 3em;
+}
+
+.card {
+  background-color: var(--light-gray);
+  border-radius: 10px;
+  box-shadow: 12px 11px 6px 0px rgba(0,0,0,0.57);
+  -webkit-box-shadow: 12px 11px 6px 0px rgba(0,0,0,0.57);
+  -moz-box-shadow: 12px 11px 6px 0px rgba(0,0,0,0.57);
+}
+
 .formSection {
   display: flex;
   flex-direction: column;
@@ -32,18 +49,39 @@ body {
 
 .formSection > input,
 .formSection > textarea {
-  max-width: 30rem;
+  max-width: 80%;
   border-radius: 3px;
   border: none;
   outline: none;
   margin: .5em;
   padding: .2em;
   font-size: 1.2em;
+  background-color: var(--white-input);
 }
 
 .formSection > label {
   padding: .2em;
-  color: var(--light-font);
   margin: .5em;
+}
+
+.formSection > h2 {
+  padding: .2em;
+}
+
+/* CV Card */
+
+.cvHeader {
+  background-color: var(--green);
+  border-radius: 10px 10px 0 0;
+}
+
+.cvHeader > h1 {
+  color: var(--white-input);
+  padding: .5em;
+}
+
+.cvHeader > h2 {
+  color: var(--white-input);
+  padding: 0 .5em;
 }
 
