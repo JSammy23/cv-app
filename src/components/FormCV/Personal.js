@@ -52,7 +52,7 @@ export class Personal extends Component {
         name='email'
         placeholder='Email'
         onChange={this.handleInputChange} />
-        <textarea name="descriptiom" 
+        <textarea name="description" 
         cols="10" 
         rows="7"
         placeholder='Description'
