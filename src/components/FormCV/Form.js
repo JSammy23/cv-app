@@ -2,6 +2,7 @@ import React, { Component }  from "react";
 import Personal from "./Personal";
 import Experience from "./Experience";
 import CVCard from "../CVCard";
+import avatar from "../../assets/avatar.png"
 
 
 
@@ -17,7 +18,7 @@ export class Form extends Component {
         phoneNumber: '',
         email: '',
         description: '',
-        photo: ''
+        photo: avatar
 
       },
       experiences: [
