@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 
 export class Personal extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     handleInputChange = (event) => {
       const { name, value } = event.target;
