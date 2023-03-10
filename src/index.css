@@ -4,6 +4,8 @@
   --light-gray: #eeeeee;
   --white-input: #ffffff;
   --green: #84CC16;
+  --bg-gray: #a4a4a4;
+  --red: #E11D48;
 }
 
 *, *::before, *::after {
@@ -13,7 +15,7 @@
 }
 
 body {
-  background-color: #a4a4a4;
+  background-color: var(--bg-gray);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -23,7 +25,7 @@ body {
 
 .header {
   background-color: var(--dark-gray);
-  color: var(--light-font);
+  color: var(--green);
   padding-left: 1em;
 }
 
@@ -41,6 +43,8 @@ body {
   -webkit-box-shadow: 12px 11px 6px 0px rgba(0,0,0,0.57);
   -moz-box-shadow: 12px 11px 6px 0px rgba(0,0,0,0.57);
 }
+
+/* Forms */
 
 .formSection {
   display: flex;
@@ -68,11 +72,31 @@ body {
   padding: .2em;
 }
 
+.btn {
+  width: 80%;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  margin: .5em;
+  padding: .2em;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.add {
+  background-color: var(--green);
+}
+
+.delete {
+  background-color: var(--red);
+}
+
 /* CV Card */
 
 .cvHeader {
   background-color: var(--green);
   border-radius: 10px 10px 0 0;
+  min-height: 107px;
 }
 
 .cvHeader > h1 {
@@ -82,6 +106,32 @@ body {
 
 .cvHeader > h2 {
   color: var(--white-input);
-  padding: 0 .5em;
+  padding: .2em .6em;
 }
+
+.cvWrapper {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  padding: .5em;
+  gap: 1em;
+}
+
+.infoTitle {
+  color: var(--green);
+  border-bottom: 2px solid var(--green);
+  margin-bottom: .3em;
+}
+
+.infoSection {
+  padding: .2em;
+  margin-bottom: 2em;
+}
+
+.cvRightCol > h3 {
+  padding: .5em 0;
+}
+
+
+
+
 
