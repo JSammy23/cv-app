@@ -34,6 +34,7 @@ body {
   grid-template-columns: 1fr 1fr;
   padding: 3em;
   gap: 3em;
+  align-items: start;
 }
 
 .card {
@@ -92,6 +93,11 @@ body {
 }
 
 /* CV Card */
+
+.cv-card {
+  position: sticky;
+  top: .8em;
+}
 
 .cvHeader {
   background-color: var(--green);
