@@ -2,10 +2,21 @@ import React, { Component } from 'react'
 
 export class Personal extends Component {
 
-    handleInputChange = (event) => {
-      const { name, value } = event.target;
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
+    this.props.onPersonalInfoChange(name, value);
+  
+    if (event.target.type === 'file' && event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageUrl = e.target.result;
+        this.props.onPersonalInfoChange(name, imageUrl);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    } else {
       this.props.onPersonalInfoChange(name, value);
-    };
+    }
+  };
 
   render() {
     return (
@@ -33,6 +44,7 @@ export class Personal extends Component {
           <input
           type="file"
           name='photo'
+          onChange={this.handleInputChange}
            />
         </label>
         <input

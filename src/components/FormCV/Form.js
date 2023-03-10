@@ -16,7 +16,8 @@ export class Form extends Component {
         address: '',
         phoneNumber: '',
         email: '',
-        description: ''
+        description: '',
+        photo: ''
 
       },
       experiences: [
