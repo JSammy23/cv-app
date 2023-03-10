@@ -6,6 +6,8 @@ export class CVCard extends Component {
 
     const { firstName, lastName, title, address, phoneNumber, email, description, photo } = this.props.personalInfo;
 
+    const { experiences } = this.props;
+
     return (
       <div className='card'>
         <div className='cvHeader'>
@@ -20,7 +22,17 @@ export class CVCard extends Component {
                 </div>
                 <div className='infoSection'>
                     <h3 className='infoTitle'>Experience</h3>
-                    {/* <p>{Experience}</p> */}
+                    {experiences.map((experience, index) => (
+                        <div key={index} className="expWrapper">
+                            <div className="dates">
+                                {experience.startDate} - {experience.endDate}
+                            </div>
+                            <div className="expInfo">
+                                <h3>{experience.position}</h3>
+                                {experience.company}, {experience.city}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className='cvRightCol'>
