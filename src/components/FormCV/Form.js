@@ -18,8 +18,17 @@ export class Form extends Component {
         email: '',
         description: ''
 
-      }
-    }
+      },
+      experiences: [
+        {
+          position: "",
+          company: "",
+          city: "",
+          startDate: "",
+          endDate: "",
+        },
+      ],
+    };
   }
 
   handlePersonalInfoChange = (fieldName, value) => {
@@ -31,6 +40,38 @@ export class Form extends Component {
     });
   };
 
+  handleExperienceChange = (experienceIndex, fieldName, value) => {
+    this.setState((prevState) => {
+      const experiences = [...prevState.experiences];
+      experiences[experienceIndex] = {
+        ...experiences[experienceIndex],
+        [fieldName]: value,
+      };
+      return { experiences };
+    });
+  };
+
+  addExperience = () => {
+    const newExperience = {
+      position: "",
+      company: "",
+      city: "",
+      startDate: "",
+      endDate: "",
+    };
+    this.setState((prevState) => ({
+      experiences: [...prevState.experiences, newExperience],
+    }));
+  };
+
+  deleteExperience = (index) => {
+    const experiences = [...this.state.experiences];
+    experiences.splice(index, 1);
+    this.setState({ experiences });
+  };
+
+
+
   render() {
     return (
       <>
@@ -41,9 +82,20 @@ export class Form extends Component {
             personalInfo={this.state.personalInfo}
             onPersonalInfoChange={this.handlePersonalInfoChange}
           />
-          <Experience />
+          <h2>Experience</h2>
+          {this.state.experiences.map((experience, index) => (
+            <Experience
+              key={index}
+              experience={experience}
+              onExperienceChange={(fieldName, value) =>
+                this.handleExperienceChange(index, fieldName, value)
+              }
+              onDelete={() => this.deleteExperience(index)}
+            />
+          ))}
+          <button className="btn add" onClick={this.addExperience}>Add</button>
         </section>
-        <CVCard personalInfo={this.state.personalInfo} />
+        <CVCard personalInfo={this.state.personalInfo} experiences={this.state.experiences} />
       </div>
       
       </>
