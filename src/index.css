@@ -127,8 +127,25 @@ body {
   margin-bottom: 2em;
 }
 
+.cvRightCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .cvRightCol > h3 {
   padding: .5em 0;
+}
+
+.cvRightCol > img {
+  width: 185px;
+}
+
+.expWrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: .3em;
+  margin-bottom: .5em;
 }
 
 
