@@ -3,6 +3,7 @@ import Personal from "./Personal";
 import Experience from "./Experience";
 import CVCard from "../CVCard";
 import avatar from "../../assets/avatar.png"
+import Education from "./Education";
 
 
 
@@ -30,6 +31,15 @@ export class Form extends Component {
           endDate: "",
         },
       ],
+      educations: [
+        {
+          university: '',
+          city: '',
+          degree: '',
+          startDate: '',
+          endDate: '',
+        },
+      ],
     };
   }
 
@@ -53,6 +63,17 @@ export class Form extends Component {
     });
   };
 
+  handleEducationChange = (educationIndex, fieldName, value) => {
+    this.setState((prevState) => {
+      const educations = [...prevState.educations];
+      educations[educationIndex] = {
+        ...educations[educationIndex],
+        [fieldName]: value,
+      };
+      return { educations };
+    });
+  };
+
   addExperience = () => {
     const newExperience = {
       position: "",
@@ -66,10 +87,29 @@ export class Form extends Component {
     }));
   };
 
+  addEducation = () => {
+    const newEducation = {
+      university: '',
+      city: '',
+      degree: '',
+      startDate: '',
+      endDate: '',
+    };
+    this.setState((prevState) => ({
+      educations: [...prevState.educations, newEducation],
+    }));
+  };
+
   deleteExperience = (index) => {
     const experiences = [...this.state.experiences];
     experiences.splice(index, 1);
     this.setState({ experiences });
+  };
+
+  deleteEducation = (index) => {
+    const educations = [...this.state.educations];
+    educations.splice(index, 1);
+    this.setState({ educations });
   };
 
 
@@ -96,6 +136,18 @@ export class Form extends Component {
             />
           ))}
           <button className="btn add" onClick={this.addExperience}>Add</button>
+          <h2>Education</h2>
+          {this.state.educations.map((education, index) => (
+            <Education 
+              key={index}
+              education={education}
+              onEducationChange={(fieldName, value) => 
+                this.handleEducationChange(index, fieldName, value)
+              }
+              onDelete={() => this.deleteEducation(index)}
+            />
+          ))}
+          <button className="btn add" onClick={this.addEducation}>Add</button>
         </section>
         <div className="cv-card">
           <CVCard  personalInfo={this.state.personalInfo} experiences={this.state.experiences} />
