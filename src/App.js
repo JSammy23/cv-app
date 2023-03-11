@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from './components/Header'
 import Form from './components/FormCV/Form'
+import Footer from './components/Footer'
 
 export class App extends Component {
   render() {
@@ -8,7 +9,7 @@ export class App extends Component {
       <>
         <Header />
         <Form />
-
+        <Footer />
       </>
     )
   }

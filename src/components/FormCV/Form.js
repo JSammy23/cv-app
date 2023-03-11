@@ -150,7 +150,9 @@ export class Form extends Component {
           <button className="btn add" onClick={this.addEducation}>Add</button>
         </section>
         <div className="cv-card">
-          <CVCard  personalInfo={this.state.personalInfo} experiences={this.state.experiences} />
+          <CVCard  personalInfo={this.state.personalInfo}
+           experiences={this.state.experiences}
+           educations={this.state.educations} />
         </div>
       </div>
       
