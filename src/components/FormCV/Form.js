@@ -20,21 +20,25 @@ const Form = () => {
     photo: avatar
   });
 
-  const [experiences, setExperiences] = useState({
-    position: "",
-    company: "",
-    city: "",
-    startDate: "",
-    endDate: "",
-  });
+  const [experiences, setExperiences] = useState([
+    {
+      position: "",
+      company: "",
+      city: "",
+      startDate: "",
+      endDate: "",
+    },
+  ]);
 
-  const [educations, setEducations] = useState({
-    university: '',
-    city: '',
-    degree: '',
-    startDate: '',
-    endDate: '',
-  });
+  const [educations, setEducations] = useState([
+    {
+      university: '',
+      city: '',
+      degree: '',
+      startDate: '',
+      endDate: '',
+    },
+  ]);
   
   
 
@@ -47,46 +51,50 @@ const Form = () => {
 
   const handleExperienceChange = (experienceIndex, fieldName, value) => {
     setExperiences((prevState) => {
-      const experiences = [...prevState];
-      experiences[experienceIndex] = {
-        ...experiences[experienceIndex],
+      const updatedExperiences = [...prevState];
+      updatedExperiences[experienceIndex] = {
+        ...updatedExperiences[experienceIndex],
         [fieldName]: value,
       };
-      return experiences;
+      return updatedExperiences;
     });
   };
 
   const handleEducationChange = (educationIndex, fieldName, value) => {
     setEducations((prevState) => {
-      const educations = [...prevState];
-      educations[educationIndex] = {
-        ...educations[educationIndex],
+      const updatedEducations = [...prevState];
+      updatedEducations[educationIndex] = {
+        ...updatedEducations[educationIndex],
         [fieldName]: value,
       };
-      return educations;
+      return updatedEducations;
     });
   };
 
   const addExperience = () => {
-    const newExperience = {
-      position: "",
-      company: "",
-      city: "",
-      startDate: "",
-      endDate: "",
-    };
-    setExperiences((prevState) => [...prevState, newExperience]);
+    setExperiences((prevState) => [
+      ...prevState,
+      {
+        position: "",
+        company: "",
+        city: "",
+        startDate: "",
+        endDate: "",
+      },
+    ]);
   };
 
   const addEducation = () => {
-    const newEducation = {
-      university: '',
-      city: '',
-      degree: '',
-      startDate: '',
-      endDate: '',
-    };
-    setEducations((prevState) => [...prevState.educations, newEducation]);
+    setEducations((prevState) => [
+      ...prevState,
+      {
+        university: '',
+        city: '',
+        degree: '',
+        startDate: '',
+        endDate: '',
+      },
+    ]);
   };
 
   const deleteExperience = (index) => {
