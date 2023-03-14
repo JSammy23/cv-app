@@ -1,4 +1,4 @@
-import React, { Component, useState }  from "react";
+import React, { useState }  from "react";
 import Personal from "./Personal";
 import Experience from "./Experience";
 import CVCard from "../CVCard";
@@ -38,14 +38,14 @@ const Form = () => {
   
   
 
-  handlePersonalInfoChange = (fieldName, value) => {
+  const handlePersonalInfoChange = (fieldName, value) => {
     setPersonalInfo((prevState) => ({
       ...prevState,
       [fieldName]: value,
     }));
   };
 
-  handleExperienceChange = (experienceIndex, fieldName, value) => {
+  const handleExperienceChange = (experienceIndex, fieldName, value) => {
     setExperiences((prevState) => {
       const experiences = [...prevState];
       experiences[experienceIndex] = {
@@ -56,7 +56,7 @@ const Form = () => {
     });
   };
 
-  handleEducationChange = (educationIndex, fieldName, value) => {
+  const handleEducationChange = (educationIndex, fieldName, value) => {
     setEducations((prevState) => {
       const educations = [...prevState];
       educations[educationIndex] = {
@@ -67,7 +67,7 @@ const Form = () => {
     });
   };
 
-  addExperience = () => {
+  const addExperience = () => {
     const newExperience = {
       position: "",
       company: "",
@@ -75,12 +75,10 @@ const Form = () => {
       startDate: "",
       endDate: "",
     };
-    this.setState((prevState) => ({
-      experiences: [...prevState.experiences, newExperience],
-    }));
+    setExperiences((prevState) => [...prevState, newExperience]);
   };
 
-  addEducation = () => {
+  const addEducation = () => {
     const newEducation = {
       university: '',
       city: '',
@@ -88,70 +86,70 @@ const Form = () => {
       startDate: '',
       endDate: '',
     };
-    this.setState((prevState) => ({
-      educations: [...prevState.educations, newEducation],
-    }));
+    setEducations((prevState) => [...prevState.educations, newEducation]);
   };
 
-  deleteExperience = (index) => {
-    const experiences = [...this.state.experiences];
-    experiences.splice(index, 1);
-    this.setState({ experiences });
+  const deleteExperience = (index) => {
+    setExperiences((prevState) => {
+      const updatedExperiences = [...prevState];
+      updatedExperiences.splice(index, 1);
+      return updatedExperiences;
+    });
   };
 
-  deleteEducation = (index) => {
-    const educations = [...this.state.educations];
-    educations.splice(index, 1);
-    this.setState({ educations });
+  const deleteEducation = (index) => {
+    setEducations((prevState) => {
+      const updatedEducations = [...prevState];
+      updatedEducations.splice(index, 1);
+      return updatedEducations;
+    });
   };
 
 
 
-  render() {
-    return (
-      <>
-      
-      <div className="wrapper">
-        <section className="card">
-          <Personal
-            personalInfo={this.state.personalInfo}
-            onPersonalInfoChange={this.handlePersonalInfoChange}
+  return (
+    <>
+    
+    <div className="wrapper">
+      <section className="card">
+        <Personal
+          personalInfo={personalInfo}
+          onPersonalInfoChange={handlePersonalInfoChange}
+        />
+        <h2>Experience</h2>
+        {experiences.map((experience, index) => (
+          <Experience
+            key={index}
+            experience={experience}
+            onExperienceChange={(fieldName, value) =>
+              handleExperienceChange(index, fieldName, value)
+            }
+            onDelete={() => deleteExperience(index)}
           />
-          <h2>Experience</h2>
-          {this.state.experiences.map((experience, index) => (
-            <Experience
-              key={index}
-              experience={experience}
-              onExperienceChange={(fieldName, value) =>
-                this.handleExperienceChange(index, fieldName, value)
-              }
-              onDelete={() => this.deleteExperience(index)}
-            />
-          ))}
-          <button className="btn add" onClick={this.addExperience}>Add</button>
-          <h2>Education</h2>
-          {this.state.educations.map((education, index) => (
-            <Education 
-              key={index}
-              education={education}
-              onEducationChange={(fieldName, value) => 
-                this.handleEducationChange(index, fieldName, value)
-              }
-              onDelete={() => this.deleteEducation(index)}
-            />
-          ))}
-          <button className="btn add" onClick={this.addEducation}>Add</button>
-        </section>
-        <div className="cv-card">
-          <CVCard  personalInfo={this.state.personalInfo}
-           experiences={this.state.experiences}
-           educations={this.state.educations} />
-        </div>
+        ))}
+        <button className="btn add" onClick={addExperience}>Add</button>
+        <h2>Education</h2>
+        {educations.map((education, index) => (
+          <Education 
+            key={index}
+            education={education}
+            onEducationChange={(fieldName, value) => 
+              handleEducationChange(index, fieldName, value)
+            }
+            onDelete={() => deleteEducation(index)}
+          />
+        ))}
+        <button className="btn add" onClick={addEducation}>Add</button>
+      </section>
+      <div className="cv-card">
+        <CVCard  personalInfo={personalInfo}
+         experiences={experiences}
+         educations={educations} />
       </div>
-      
-      </>
-    )
-  }
+    </div>
+    
+    </>
+  )
 }
 
 export default Form
