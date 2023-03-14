@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class CVCard extends Component {
+function CVCard(props) {
     
-  render() {
+  
 
-    const { firstName, lastName, title, address, phoneNumber, email, description, photo } = this.props.personalInfo;
+    const { firstName, lastName, title, address, phoneNumber, email, description,   photo } = props.personalInfo;
 
-    const { experiences } = this.props;
+    const { experiences } = props;
 
-    const { educations } = this.props;
+    const { educations } = props;
 
     return (
       <div className='card'>
@@ -64,7 +64,7 @@ export class CVCard extends Component {
         </div>
       </div>
     )
-  }
-}
+};
+
 
 export default CVCard
