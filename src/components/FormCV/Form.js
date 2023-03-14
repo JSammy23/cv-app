@@ -46,24 +46,24 @@ const Form = () => {
   };
 
   handleExperienceChange = (experienceIndex, fieldName, value) => {
-    this.setState((prevState) => {
-      const experiences = [...prevState.experiences];
+    setExperiences((prevState) => {
+      const experiences = [...prevState];
       experiences[experienceIndex] = {
         ...experiences[experienceIndex],
         [fieldName]: value,
       };
-      return { experiences };
+      return experiences;
     });
   };
 
   handleEducationChange = (educationIndex, fieldName, value) => {
-    this.setState((prevState) => {
-      const educations = [...prevState.educations];
+    setEducations((prevState) => {
+      const educations = [...prevState];
       educations[educationIndex] = {
         ...educations[educationIndex],
         [fieldName]: value,
       };
-      return { educations };
+      return educations;
     });
   };
 
