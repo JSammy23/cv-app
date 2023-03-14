@@ -1,4 +1,4 @@
-import React, { Component }  from "react";
+import React, { Component, useState }  from "react";
 import Personal from "./Personal";
 import Experience from "./Experience";
 import CVCard from "../CVCard";
@@ -7,49 +7,42 @@ import Education from "./Education";
 
 
 
-export class Form extends Component {
-  constructor() {
-    super();
-    this.state = {
-      personalInfo: {
-        firstName: '',
-        lastName: '',
-        title: '',
-        address: '',
-        phoneNumber: '',
-        email: '',
-        description: '',
-        photo: avatar
+const Form = () => {
+  
+  const [personalInfo, setPersonalInfo] = useState({
+    firstName: '',
+    title: '',
+    lastName: '',
+    phoneNumber: '',
+    address: '',
+    description: '',
+    email: '',
+    photo: avatar
+  });
 
-      },
-      experiences: [
-        {
-          position: "",
-          company: "",
-          city: "",
-          startDate: "",
-          endDate: "",
-        },
-      ],
-      educations: [
-        {
-          university: '',
-          city: '',
-          degree: '',
-          startDate: '',
-          endDate: '',
-        },
-      ],
-    };
-  }
+  const [experiences, setExperiences] = useState({
+    position: "",
+    company: "",
+    city: "",
+    startDate: "",
+    endDate: "",
+  });
+
+  const [educations, setEducations] = useState({
+    university: '',
+    city: '',
+    degree: '',
+    startDate: '',
+    endDate: '',
+  });
+  
+  
 
   handlePersonalInfoChange = (fieldName, value) => {
-    this.setState({
-      personalInfo: {
-        ...this.state.personalInfo,
-        [fieldName]: value,
-      }
-    });
+    setPersonalInfo((prevState) => ({
+      ...prevState,
+      [fieldName]: value,
+    }));
   };
 
   handleExperienceChange = (experienceIndex, fieldName, value) => {
